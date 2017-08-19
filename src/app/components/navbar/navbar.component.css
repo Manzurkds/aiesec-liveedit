@@ -1,0 +1,6 @@
+.navbar-transparent {
+    background-color: transparent !important;
+}
+.navbar-custom a {
+    color: white !important;
+}
