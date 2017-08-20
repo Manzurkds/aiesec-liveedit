@@ -33,3 +33,13 @@
 .opportunity-title {
     
 }
+.info-box {
+    display: flex;
+}
+.general-info {
+    flex-basis: 60%;
+}
+.sidebar-info {
+    flex-basis: 40%;
+    background: peru;
+}
