@@ -68,13 +68,32 @@ a {
 }
 .inner-contents-tabular {
     display: flex;
-    padding-bottom: 2em;
+    padding-bottom: 1em;
 }
 .flex-left {
     flex-basis: 20%;
+    color: #4A4A4A;
+    font-family: Lato;
+    font-size: 15px;
+    font-weight: bold;
+    line-height: 15px;
+    width: 20%;
+    margin-right: 5px;
 }
 .flex-right {
     flex-basis: 80%;
     border-bottom: 1px solid #cbcbcb;
-    padding-bottom: 4em;
+    padding-bottom: 1em;
+}
+.flex-right .heading {
+    color: #9b9b9b;
+    font-family: Lato;
+    font-size: 12px;
+    font-weight: bold;
+    line-height: 15px;
+    text-transform: uppercase;
+    padding-bottom: 1em;
+}
+.flex-right .content {
+    padding-bottom: 1em;
 }
