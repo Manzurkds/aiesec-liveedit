@@ -44,3 +44,37 @@ a {
     text-decoration: none !important;
     color: #555;
 }
+.tab-content {
+    padding-top: 5em;
+}
+.heading-out {
+    color: #4A4A4A;
+    font-family: Lato;
+    font-size: 20px;
+    font-weight: bold;
+    line-height: 24px;
+}
+.tab-contents .headings {
+    margin: 2% 0;
+    color: #4A4A4A;
+    font-family: Lato;
+    font-size: 16px;
+    font-weight: bold;
+    line-height: 19px;
+}
+.tab-contents {
+    margin-top: 2em;
+    margin-bottom: 2em;
+}
+.inner-contents-tabular {
+    display: flex;
+    padding-bottom: 2em;
+}
+.flex-left {
+    flex-basis: 20%;
+}
+.flex-right {
+    flex-basis: 80%;
+    border-bottom: 1px solid #cbcbcb;
+    padding-bottom: 4em;
+}
