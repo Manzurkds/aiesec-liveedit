@@ -2,7 +2,7 @@
   <div class="overlay"></div>
   <div class="opportunity-details">
     <div class="opportunity-content">
-      <h1 class="opportunity-title">Legacy Division Assistant</h1>
+    <h1 class="opportunity-title" *ngIf="opportunity">{{ opportunity.title }}</h1>
       <h3 class="opportunity-location"><i class="fa fa-map-marker" aria-hidden="true"></i> Not Available</h3>
     </div>
   </div>
