@@ -1,9 +1,11 @@
 import { Component,
   Input,
+  Output,
   ElementRef,
   ViewChild,
   Renderer,
   forwardRef,
+  EventEmitter,
   OnInit } from '@angular/core';
 import {ControlValueAccessor, NG_VALUE_ACCESSOR} from '@angular/forms';
 
@@ -32,7 +34,8 @@ export class InlineEditComponent implements ControlValueAccessor, OnInit {
     private editing: boolean = false; // Is Component in edit mode?
     public onChange: any = Function.prototype; // Trascend the onChange event
     public onTouched: any = Function.prototype; // Trascend the onTouch event
-  
+    @Output() onSave: EventEmitter<any> = new EventEmitter();
+
     // Control Value Accessors for ngModel
     get value(): any {
       return this._value;
@@ -46,6 +49,7 @@ export class InlineEditComponent implements ControlValueAccessor, OnInit {
     }
   
     constructor(element: ElementRef, private _renderer: Renderer) {
+      this.onSave = new EventEmitter();
     }
   
     // Required for ControlValueAccessor interface
@@ -66,6 +70,7 @@ export class InlineEditComponent implements ControlValueAccessor, OnInit {
     // Do stuff when the input element loses focus
     onBlur($event: Event) {
       this.editing = false;
+      this.onSave.emit($event);
     }
   
     // Start the editting process for the input element

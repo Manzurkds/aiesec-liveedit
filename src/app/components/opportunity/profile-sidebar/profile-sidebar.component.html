@@ -9,7 +9,7 @@
                 </div>
                 <div class="content" >
                     <span>
-                        <span *ngFor="let background of opportunity.backgrounds;let index = index; trackBy:trackByIndex"><app-inline-edit [(ngModel)]="opportunity.backgrounds[index].name" [required]="true" type="text">
+                        <span *ngFor="let background of opportunity.backgrounds;let index = index; trackBy:trackByIndex"><app-inline-edit (onSave)="backgroundNameChanged($event)" [(ngModel)]="opportunity.backgrounds[index].name" [required]="true" type="text" id="{{opportunity.backgrounds[index].id}}">
                             </app-inline-edit></span>
                     </span>
                 </div>

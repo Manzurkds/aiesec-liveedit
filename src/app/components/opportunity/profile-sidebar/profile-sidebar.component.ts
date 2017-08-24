@@ -7,6 +7,7 @@ import {InlineEditorComponent} from 'ng2-inline-editor';
   templateUrl: './profile-sidebar.component.html',
   styleUrls: ['./profile-sidebar.component.css']
 })
+
 export class ProfileSidebarComponent implements OnInit {
 
   opportunity: any;
@@ -19,6 +20,11 @@ export class ProfileSidebarComponent implements OnInit {
   }
   name: string = 'Gottsohn';
 
-  test1: string = "Test1";
-  test2: string = "Test2";
+  backgroundNameChanged(event) {
+    let backgroundvalue = event.target.value;
+    let id = event.target.parentElement.parentElement.parentElement.id;
+
+    console.log(backgroundvalue, id);
+  }
+
 }
