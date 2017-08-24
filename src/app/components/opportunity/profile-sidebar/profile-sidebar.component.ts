@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { OpportunityComponent } from '../opportunity.component';
+import {InlineEditorComponent} from 'ng2-inline-editor';
 
 @Component({
   selector: 'app-profile-sidebar',
@@ -7,9 +9,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProfileSidebarComponent implements OnInit {
 
-  constructor() { }
+  opportunity: any;
+  
+  constructor(private opportunityComponent: OpportunityComponent) {
+    this.opportunity = opportunityComponent.opportunity;
+  }
 
   ngOnInit() {
   }
+  name: string = 'Gottsohn';
 
+  test1: string = "Test1";
+  test2: string = "Test2";
 }

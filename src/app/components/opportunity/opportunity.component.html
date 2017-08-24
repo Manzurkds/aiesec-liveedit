@@ -1,13 +1,14 @@
-<div class="opportunity-cover">
+<div *ngIf="opportunity" class="opportunity-cover" [ngStyle]="{'background': 'url(' + opportunity.cover_photo_urls + ') no-repeat center', 'background-size': 'cover' }">
   <div class="overlay"></div>
   <div class="opportunity-details">
     <div class="opportunity-content">
-    <h1 class="opportunity-title" *ngIf="opportunity">{{ opportunity.title }}</h1>
+    <h1 class="opportunity-title">{{ opportunity.title }}</h1>
+    <inline-editor type="text" [(ngModel)]="editableText" (onSave)="saveEditable($event)" name="editableText1" size="8"></inline-editor>
       <h3 class="opportunity-location"><i class="fa fa-map-marker" aria-hidden="true"></i> Not Available</h3>
     </div>
   </div>
 </div>
-<div class="container">
+<div *ngIf="opportunity" class="container">
   <div class="info-box">
     <div class="general-info">
       <app-general-info></app-general-info>

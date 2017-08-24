@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { OpportunityComponent } from '../opportunity.component';
 
 @Component({
   selector: 'app-general-info',
@@ -6,10 +7,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./general-info.component.css']
 })
 export class GeneralInfoComponent implements OnInit {
+  opportunity: any;
 
-  constructor() { }
+  constructor(private opportunityComponent: OpportunityComponent) {
+    this.opportunity = opportunityComponent.opportunity;
+  }
 
   ngOnInit() {
+   
   }
 
 }

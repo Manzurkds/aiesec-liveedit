@@ -1,12 +1,14 @@
 import { Component, OnInit } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import { OpportunityService } from '../../services/opportunity.service';
-
+import {InlineEditorComponent} from 'ng2-inline-editor';
 
 @Component({
   selector: 'app-opportunity',
   templateUrl: './opportunity.component.html',
   styleUrls: ['./opportunity.component.css']
 })
+
 export class OpportunityComponent implements OnInit {
   href:string;
   opportunityId:number;
@@ -21,11 +23,13 @@ export class OpportunityComponent implements OnInit {
   }
 
   ngOnInit() {
-
     this.opportunityService.getOpportunity(this.opportunityId).subscribe((opportunityData) => {
       console.log(opportunityData);
       this.opportunity = opportunityData;
     });
   }
 
+    getOpportunityData() {
+      return this.opportunity;
+    }
 }

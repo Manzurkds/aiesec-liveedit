@@ -7,10 +7,10 @@
                 <div class="heading">
                     Background
                 </div>
-                <div class="content">
+                <div class="content" >
                     <span>
-                        <span>Statistics</span>
-                        <span>Telecomunication Engineering</span>
+                        <span *ngFor="let background of opportunity.backgrounds;let index = index; trackBy:trackByIndex"><app-inline-edit [(ngModel)]="opportunity.backgrounds[index].name" [required]="true" type="text">
+                            </app-inline-edit></span>
                     </span>
                 </div>
             </div>
@@ -37,7 +37,7 @@
                     Duration
                 </div>
                 <div class="content">
-                    <span>1 Weeks</span>
+                    <span>{{opportunity.duration}} Weeks</span>
                 </div>
             </div>
         </div>
@@ -47,7 +47,8 @@
                     Salary
                 </div>
                 <div class="content">
-                    <span>Unpaid</span>
+                    <span *ngIf="opportunity.programme_fee.fee; else noSalary">{{opportunity.programme_fee.currency.alphabetic_code}} {{opportunity.programme_fee.fee}}</span>
+                    <ng-template #noSalary>Unpaid</ng-template>
                 </div>
             </div>
             <div class="flex-33">
@@ -60,7 +61,7 @@
                     Position
                 </div>
                 <div class="content">
-                    <span>3</span>
+                    <span>{{opportunity.available_openings}}</span>
                 </div>
             </div>
         </div>
@@ -70,7 +71,8 @@
                     Fees
                 </div>
                 <div class="content">
-                    <span>$400</span>
+                    <span *ngIf="opportunity.programme_fee.fee; else noFee">{{opportunity.programme_fee.currency.alphabetic_code}} {{opportunity.programme_fee.fee}}</span>
+                    <ng-template #noFee>Free!</ng-template>
                 </div>
             </div>
         </div>
