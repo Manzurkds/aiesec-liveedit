@@ -29,7 +29,8 @@
           Role description
         </div>
         <div>
-          <span>iterate out-of-the-box contents</span>
+            <app-inline-edit (onSave)="descriptionChanged($event)" [(ngModel)]="opportunity.description" [required]="true" type="text">
+            </app-inline-edit>
         </div>
       </div>
       <div class="inner-contents">

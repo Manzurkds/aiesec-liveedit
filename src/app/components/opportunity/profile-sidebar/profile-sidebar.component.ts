@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { OpportunityComponent } from '../opportunity.component';
 import {InlineEditorComponent} from 'ng2-inline-editor';
+import { OpportunityService } from '../../../services/opportunity.service';
 
 @Component({
   selector: 'app-profile-sidebar',
@@ -12,7 +13,7 @@ export class ProfileSidebarComponent implements OnInit {
 
   opportunity: any;
   
-  constructor(private opportunityComponent: OpportunityComponent) {
+  constructor(private opportunityComponent: OpportunityComponent, private opportunityService: OpportunityComponent) {
     this.opportunity = opportunityComponent.opportunity;
   }
 
