@@ -32,4 +32,15 @@ export class OpportunityComponent implements OnInit {
     getOpportunityData() {
       return this.opportunity;
     }
+
+    valueChanged(event) {
+      
+      let id = this.opportunity.id;
+      let value = event.target.value;
+      let property = event.target.parentElement.parentElement.parentElement.attributes.name.value;
+
+      this.opportunityService.setSuperficialValues(id, value, property).subscribe((result) => {
+        console.log(result);
+      });
+    }
 }

@@ -13,10 +13,14 @@ div.inline-edit {
     padding: .5em 0;
     color: #444 !important;
     width: auto;
+    background: transparent;
   }
   
 input {
     border: 1px solid #ccc;
     border-radius: 2px;
     padding: 4px 10px;
+    background: grey;
+    opacity: 0.3;
+ 
   }

@@ -2,7 +2,8 @@
   <div class="overlay"></div>
   <div class="opportunity-details">
     <div class="opportunity-content">
-    <h1 class="opportunity-title">{{ opportunity.title }}</h1>
+    <h1 class="opportunity-title"><app-inline-edit name="title" (onSave)="valueChanged($event)" [(ngModel)]="opportunity.title" [required]="true" type="text" name="title">
+      </app-inline-edit></h1>
     <!-- <inline-editor type="text" [(ngModel)]="editableText" (onSave)="saveEditable($event)" name="editableText1" size="8"></inline-editor> -->
       <h3 class="opportunity-location"><i class="fa fa-map-marker" aria-hidden="true"></i> Not Available</h3>
     </div>

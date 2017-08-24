@@ -29,7 +29,7 @@
           Role description
         </div>
         <div>
-            <app-inline-edit (onSave)="descriptionChanged($event)" [(ngModel)]="opportunity.description" [required]="true" type="text">
+            <app-inline-edit name="description" (onSave)="valueChanged($event)" [(ngModel)]="opportunity.description" [required]="true" type="text">
             </app-inline-edit>
         </div>
       </div>

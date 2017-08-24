@@ -18,13 +18,14 @@ export class GeneralInfoComponent implements OnInit {
    
   }
 
-  descriptionChanged(event) {
+  valueChanged(event) {
+    
     let id = this.opportunity.id;
     let value = event.target.value;
-    
-    console.log(id, value);
+    let property = event.target.parentElement.parentElement.parentElement.attributes.name.value;
 
-    this.opportunityService.setDescription(id, value).subscribe((result) => {
+
+    this.opportunityService.setSuperficialValues(id, value, property).subscribe((result) => {
       console.log(result);
     });;
   }
