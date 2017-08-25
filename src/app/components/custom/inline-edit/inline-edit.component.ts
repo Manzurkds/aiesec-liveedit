@@ -31,7 +31,7 @@ export class InlineEditComponent implements ControlValueAccessor, OnInit {
     @Input() disabled: boolean = false; // Is input disabled?
     private _value: string = ''; // Private variable for input value
     private preValue: string = ''; // The value before clicking to edit
-    private editing: boolean = false; // Is Component in edit mode?
+    public editing: boolean = false; // Is Component in edit mode?
     public onChange: any = Function.prototype; // Trascend the onChange event
     public onTouched: any = Function.prototype; // Trascend the onTouch event
     @Output() onSave: EventEmitter<any> = new EventEmitter();

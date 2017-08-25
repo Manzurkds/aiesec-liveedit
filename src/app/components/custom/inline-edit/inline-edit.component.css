@@ -20,7 +20,5 @@ input {
     border: 1px solid #ccc;
     border-radius: 2px;
     padding: 4px 10px;
-    background: grey;
-    opacity: 0.3;
- 
+    background: rgba(256, 256, 256, 0.2);
   }
