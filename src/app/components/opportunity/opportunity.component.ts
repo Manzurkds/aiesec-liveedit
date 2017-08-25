@@ -46,4 +46,15 @@ export class OpportunityComponent implements OnInit {
         console.log(result);
       });
     }
+
+    checkForDuplicates(id, property) {
+      let existingAray = this.opportunity[property];
+
+      for(let item of existingAray) {
+        if(item.id == id) {
+          return false;
+        }
+      }
+      return true;
+  }
 }

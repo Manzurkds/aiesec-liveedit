@@ -64,6 +64,7 @@
                         </select>
                         <span (click)="toggleInput($event)" id="requiredBackgrounds" *ngIf="!(editing && editing.requiredBackgrounds)">Add</span>
                         <span (click)="toggleInput($event)" id="requiredBackgrounds" *ngIf="editing && editing.requiredBackgrounds">Cancel</span>
+                        <p *ngIf="editing && editing.requiredBackgrounds && error && error.requiredBackgrounds">{{error.requiredBackgrounds}}</p>
                     </div>
                     <div class="heading">
                         Preferred

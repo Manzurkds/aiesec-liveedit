@@ -11,15 +11,12 @@ export class GeneralInfoComponent implements OnInit {
   opportunity: any;
   lists: any;
   editing: {};
+  error: {};
   backgroundRequired: any;
 
   constructor(private opportunityComponent: OpportunityComponent, private opportunityService: OpportunityService) {
     this.opportunity = opportunityComponent.opportunity;
     this.lists = opportunityComponent.lists;
-
-    // this.editing = {
-    //   "requiredBackground": false
-    // }
   }
 
   ngOnInit() {
@@ -50,26 +47,34 @@ export class GeneralInfoComponent implements OnInit {
 
   setBackgrounds(event) {
 
-    let backgroundId = event.target.value;
-    let value = event.target.selectedOptions[0].text;
-    let property = event.target.name;
-    let matchedProperty = 'required' + property[0].toUpperCase() + property.substr(1);
-    let option = this.editing[matchedProperty] ? 'required': 'preferred';
+    let backgroundId = event.target.value; //Gets objects numeric id
+    let property = event.target.name; //Gets properties generic names eg. backgrounds, skills, etc
+    let matchedProperty = 'required' + property[0].toUpperCase() + property.substr(1); // match the property to check for required and preferred
 
+    let isNew = this.opportunityComponent.checkForDuplicates(backgroundId, property);
 
-    let object = {"id": backgroundId, "name": value, "option": option};
-
-    let array = this.opportunity[property];
-    array.push(object);
-
-    let id = this.opportunity.id;
-
-    this.opportunityService.setValues(id, array, property).subscribe((result) => {
-        console.log(result);
-    }, (Error) => {
-        let error = Error.json().error;
-        console.log(error);
-    });
+    if(isNew) {
+      let id = this.opportunity.id;
+      let value = event.target.selectedOptions[0].text; //value(name) of the seleced backgrounds, skills, etc
+      let option = this.editing[matchedProperty] ? 'required': 'preferred';
+  
+      let object = {"id": backgroundId, "name": value, "option": option};
+  
+      let array = this.opportunity[property];
+      array.push(object); 
+  
+      this.opportunityService.setValues(id, array, property).subscribe((result) => {
+          console.log(result);
+      }, (Error) => {
+          let error = Error.json().error;
+          console.log(error);
+          this.error = {[matchedProperty]: error};
+      });
+    } else {
+      let error = "This field is already selected!"
+      this.error = {[matchedProperty]: error};
+    }
+    
   }
 
 }
