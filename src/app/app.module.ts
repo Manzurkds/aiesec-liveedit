@@ -11,6 +11,7 @@ import { GeneralInfoComponent } from './components/opportunity/general-info/gene
 import { ProfileSidebarComponent } from './components/opportunity/profile-sidebar/profile-sidebar.component';
 
 import { OpportunityService } from './services/opportunity.service';
+import { ListService } from './services/list.service';
 import { InlineEditComponent } from './components/custom/inline-edit/inline-edit.component';
 
 @NgModule({
@@ -28,7 +29,7 @@ import { InlineEditComponent } from './components/custom/inline-edit/inline-edit
     HttpModule,
     InlineEditorModule
   ],
-  providers: [ OpportunityService ],
+  providers: [ OpportunityService, ListService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

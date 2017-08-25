@@ -1,4 +1,4 @@
-<div class="info" id="parentBody">
+<div class="info" id="parentBody" *ngIf="opportunity">
   <div class="custom-nav-wrapper top mobile-hidden" id="stickyNav">
       <div class="custom-nav">
         <div class="custom-nav-item active">
@@ -46,21 +46,37 @@
         <div class="heading-out">
             Prerequisites
           </div>
-        <div class="profile-match">
-            <span>Matches your profile</span>
-        </div>
         <div class="inner-contents-tabular">
             <div class="flex-left">
               Backgrounds
             </div>
             <div class="flex-right">
-                <div class="heading">
-                    Required
+                <div *ngIf="opportunity.backgrounds.length > 0">
+                    <div class="heading">
+                        Required
+                    </div>
+                    <div class="content">
+                        <span *ngFor="let background of opportunity.backgrounds">
+                            <span *ngIf="background.option == 'required'">{{background.name}}, </span>
+                        </span>
+                        <select (change)="setBackgrounds($event)" name="backgrounds" id="requiredBackgroundInput" *ngIf="editing && editing.requiredBackgrounds" [(ngModel)]="backgroundRequired">
+                            <option *ngFor="let background of lists.backgrounds" [value]="background.id">{{background.name}}</option>
+                        </select>
+                        <span (click)="toggleInput($event)" id="requiredBackgrounds" *ngIf="!(editing && editing.requiredBackgrounds)">Add</span>
+                        <span (click)="toggleInput($event)" id="requiredBackgrounds" *ngIf="editing && editing.requiredBackgrounds">Cancel</span>
+                    </div>
+                    <div class="heading">
+                        Preferred
+                    </div>
+                    <div class="content">
+                        <span *ngFor="let background of opportunity.backgrounds">
+                            <span *ngIf="background.option == 'preferred'">{{background.name}}, </span>
+                        </span>
+                    </div>
                 </div>
-                <div class="content">
+                <div class="content" *ngIf="opportunity.backgrounds.length < 1">
                     <span>
-                        <span>Statistics</span>
-                        <span>Telecomunication Engineering</span>
+                        <span>No Preference </span>
                     </span>
                 </div>
             </div>
@@ -70,24 +86,28 @@
               Skills
           </div>
           <div class="flex-right">
-              <div class="heading">
-                  Required
-              </div>
-              <div class="content">
-                  <span>
-                      <span>Fortran</span>
-                      <span>CVS</span>
+              <div *ngIf="opportunity.skills.length > 0">
+                <div class="heading">
+                    Required
+                </div>
+                <div class="content">
+                  <span *ngFor="let skill of opportunity.skills">
+                      <span *ngIf="skill.option == 'required'">{{skill.name}}, </span>
                   </span>
-              </div>
-              <div class="heading">
-                  Preferred
-              </div>
-              <div class="content">
-                  <span>
-                      <span>Database Administration</span>
-                      <span>Corel Draw</span>
-                      <span>Photoshop</span>
+                </div>
+                <div class="heading">
+                    Preferred
+                </div>
+                <div class="content">
+                  <span *ngFor="let skill of opportunity.skills">
+                      <span *ngIf="skill.option == 'preferred'">{{skill.name}}, </span>
                   </span>
+                </div>
+              </div>
+              <div class="content" *ngIf="opportunity.skills.length < 1">
+                <span>
+                    <span>No Preference </span>
+                </span>
               </div>
           </div>
         </div>
@@ -96,11 +116,14 @@
               Nationalities
           </div>
           <div class="flex-right">
-              <div class="content">
-                  <span>
-                      <span>No Preference</span>
-                  </span>
-              </div>
+            <div class="content">
+                <span *ngFor="let nationality of opportunity.nationalities" ngIf="opportunity.nationalities.length > 0">
+                    <span>{{nationality.name}}, </span>
+                </span>
+                <span *ngIf="opportunity.nationalities.length < 1">
+                    <span>No Preference </span>
+                </span>
+            </div>
           </div>
         </div>
         <div class="inner-contents-tabular">
@@ -108,14 +131,28 @@
               Languages
           </div>
           <div class="flex-right">
-              <div class="heading">
-                  Required
+              <div *ngIf="opportunity.languages.length > 0">
+                <div class="heading">
+                    Required
+                </div>
+                <div class="content">
+                    <span *ngFor="let language of opportunity.languages">
+                        <span *ngIf="language.option == 'required'">{{language.name}}, </span>
+                    </span>
+                </div>
+                <div class="heading">
+                  Preferred
+                </div>
+                <div class="content">
+                    <span *ngFor="let language of opportunity.languages">
+                        <span *ngIf="language.option == 'preferred'">{{language.name}}, </span>
+                    </span>
+                </div>
               </div>
-              <div class="content">
-                  <span>
-                      <span>Sign Language</span>
-                      <span>Vietnamese</span>
-                  </span>
+              <div class="content" *ngIf="opportunity.languages.length < 1">
+                <span>
+                    <span>No Preference </span>
+                </span>
               </div>
           </div>
         </div>
