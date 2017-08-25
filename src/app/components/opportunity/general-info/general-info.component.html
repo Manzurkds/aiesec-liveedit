@@ -59,7 +59,7 @@
                         <span *ngFor="let background of opportunity.backgrounds">
                             <span *ngIf="background.option == 'required'">{{background.name}}, </span>
                         </span>
-                        <select (change)="setBackgrounds($event)" name="backgrounds" id="requiredBackgroundInput" *ngIf="editing && editing.requiredBackgrounds" [(ngModel)]="backgroundRequired">
+                        <select (change)="setArrayValues($event)" name="backgrounds" id="requiredBackgroundInput" *ngIf="editing && editing.requiredBackgrounds" [(ngModel)]="backgroundRequired">
                             <option *ngFor="let background of lists.backgrounds" [value]="background.id">{{background.name}}</option>
                         </select>
                         <span (click)="toggleInput($event)" id="requiredBackgrounds" *ngIf="!(editing && editing.requiredBackgrounds)">Add</span>

@@ -45,7 +45,7 @@ export class GeneralInfoComponent implements OnInit {
 
   }
 
-  setBackgrounds(event) {
+  setArrayValues(event) {
 
     let backgroundId = event.target.value; //Gets objects numeric id
     let property = event.target.name; //Gets properties generic names eg. backgrounds, skills, etc
@@ -59,7 +59,8 @@ export class GeneralInfoComponent implements OnInit {
       let option = this.editing[matchedProperty] ? 'required': 'preferred';
   
       let object = {"id": backgroundId, "name": value, "option": option};
-  
+      let oldArray = this.opportunity[property].slice();
+
       let array = this.opportunity[property];
       array.push(object); 
   
@@ -69,6 +70,7 @@ export class GeneralInfoComponent implements OnInit {
           let error = Error.json().error;
           console.log(error);
           this.error = {[matchedProperty]: error};
+          this.opportunity[property] = oldArray;
       });
     } else {
       let error = "This field is already selected!"
