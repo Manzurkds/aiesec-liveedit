@@ -11,6 +11,7 @@ import { GeneralInfoComponent } from './components/opportunity/general-info/gene
 import { OpportunityService } from './services/opportunity.service';
 import { ListService } from './services/list.service';
 import { InlineEditComponent } from './components/custom/inline-edit/inline-edit.component';
+import { MyFilterPipe } from './pipes/my-filter.pipe';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { InlineEditComponent } from './components/custom/inline-edit/inline-edit
     NavbarComponent,
     OpportunityComponent,
     GeneralInfoComponent,
-    InlineEditComponent
+    InlineEditComponent,
+    MyFilterPipe
   ],
   imports: [
     BrowserModule,

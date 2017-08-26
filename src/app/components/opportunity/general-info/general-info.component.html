@@ -56,8 +56,9 @@
                         Required
                     </div>
                     <div class="content">
-                        <span *ngFor="let background of opportunity.backgrounds">
-                            <span *ngIf="background.option == 'required'">{{background.name}}, </span>
+                        <span *ngFor="let background of opportunity.backgrounds | myFilter: 'required'; let last = last">
+                            <span>{{background.name}}</span>
+                            <span *ngIf="!last">, </span>
                         </span>
                         <select (change)="setArrayValues($event)" name="backgrounds" id="requiredBackgroundInput" *ngIf="editing && editing.requiredBackgrounds" [(ngModel)]="backgroundRequired">
                             <option *ngFor="let background of lists.backgrounds" [value]="background.id">{{background.name}}</option>
@@ -70,8 +71,9 @@
                         Preferred
                     </div>
                     <div class="content">
-                        <span *ngFor="let background of opportunity.backgrounds">
-                            <span *ngIf="background.option == 'preferred'">{{background.name}}, </span>
+                        <span *ngFor="let background of opportunity.backgrounds | myFilter: 'preferred'; let last = last">
+                            <span>{{background.name}}</span>
+                            <span *ngIf="!last">, </span>
                         </span>
                     </div>
                 </div>
@@ -92,16 +94,18 @@
                     Required
                 </div>
                 <div class="content">
-                  <span *ngFor="let skill of opportunity.skills">
-                      <span *ngIf="skill.option == 'required'">{{skill.name}}, </span>
+                  <span *ngFor="let skill of opportunity.skills | myFilter: 'required'; let last = last">
+                      <span>{{skill.name}}</span>
+                      <span *ngIf="!last">, </span>
                   </span>
                 </div>
                 <div class="heading">
                     Preferred
                 </div>
                 <div class="content">
-                  <span *ngFor="let skill of opportunity.skills">
-                      <span *ngIf="skill.option == 'preferred'">{{skill.name}}, </span>
+                  <span *ngFor="let skill of opportunity.skills | myFilter: 'preferred'; let last = last">
+                      <span>{{skill.name}}</span>
+                      <span *ngIf="!last">, </span>
                   </span>
                 </div>
               </div>
@@ -118,8 +122,9 @@
           </div>
           <div class="flex-right">
             <div class="content">
-                <span *ngFor="let nationality of opportunity.nationalities" ngIf="opportunity.nationalities.length > 0">
-                    <span>{{nationality.name}}, </span>
+                <span *ngFor="let nationality of opportunity.nationalities; let last = last" ngIf="opportunity.nationalities.length > 0">
+                    <span>{{nationality.name}}</span>
+                    <span *ngIf="!last">, </span>
                 </span>
                 <span *ngIf="opportunity.nationalities.length < 1">
                     <span>No Preference </span>
@@ -137,16 +142,18 @@
                     Required
                 </div>
                 <div class="content">
-                    <span *ngFor="let language of opportunity.languages">
-                        <span *ngIf="language.option == 'required'">{{language.name}}, </span>
+                    <span *ngFor="let language of opportunity.languages | myFilter: 'required'; let last = last">
+                        <span>{{language.name}}</span>
+                        <span *ngIf="!last">, </span>
                     </span>
                 </div>
                 <div class="heading">
                   Preferred
                 </div>
                 <div class="content">
-                    <span *ngFor="let language of opportunity.languages">
-                        <span *ngIf="language.option == 'preferred'">{{language.name}}, </span>
+                    <span *ngFor="let language of opportunity.languages | myFilter: 'preferred'; let last = last">
+                        <span>{{language.name}}</span>
+                        <span *ngIf="!last">, </span>
                     </span>
                 </div>
               </div>

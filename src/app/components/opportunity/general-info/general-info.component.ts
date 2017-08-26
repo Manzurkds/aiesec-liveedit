@@ -39,6 +39,7 @@ export class GeneralInfoComponent implements OnInit {
 
     if(this.editing && this.editing[property] === false) {
       this.editing = {[property]: true};
+      this.error = {[property]: null};
     } else {
       this.editing = {[property]: false};
     }
@@ -66,6 +67,7 @@ export class GeneralInfoComponent implements OnInit {
   
       this.opportunityService.setValues(id, array, property).subscribe((result) => {
           console.log(result);
+          this.error = {[matchedProperty]: null};
       }, (Error) => {
           let error = Error.json().error;
           console.log(error);
