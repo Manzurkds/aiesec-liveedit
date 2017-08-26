@@ -63,8 +63,8 @@
                         <select (change)="setArrayValues($event)" name="backgrounds" id="requiredBackgroundInput" *ngIf="editing && editing.requiredBackgrounds" [(ngModel)]="backgroundRequired">
                             <option *ngFor="let background of lists.backgrounds" [value]="background.id">{{background.name}}</option>
                         </select>
-                        <span (click)="toggleInput($event)" id="requiredBackgrounds" *ngIf="!(editing && editing.requiredBackgrounds)">Add</span>
-                        <span (click)="toggleInput($event)" id="requiredBackgrounds" *ngIf="editing && editing.requiredBackgrounds">Cancel</span>
+                        <span (click)="toggleInput($event)" id="requiredBackgrounds" *ngIf="!(editing && editing.requiredBackgrounds)" class="btn btn-primary my-button">Add</span>
+                        <span (click)="toggleInput($event)" id="requiredBackgrounds" *ngIf="editing && editing.requiredBackgrounds" class="btn btn-primary my-button button-cancel">Cancel</span>
                         <p *ngIf="editing && editing.requiredBackgrounds && error && error.requiredBackgrounds">{{error.requiredBackgrounds}}</p>
                     </div>
                     <div class="heading">
@@ -75,6 +75,12 @@
                             <span>{{background.name}}</span>
                             <span *ngIf="!last">, </span>
                         </span>
+                        <select (change)="setArrayValues($event)" name="backgrounds" id="preferredBackgroundInput" *ngIf="editing && editing.preferredBackgrounds" [(ngModel)]="backgroundPreferred">
+                            <option *ngFor="let background of lists.backgrounds" [value]="background.id">{{background.name}}</option>
+                        </select>
+                        <span (click)="toggleInput($event)" id="preferredBackgrounds" *ngIf="!(editing && editing.preferredBackgrounds)" class="btn btn-primary my-button">Add</span>
+                        <span (click)="toggleInput($event)" id="preferredBackgrounds" *ngIf="editing && editing.preferredBackgrounds" class="btn btn-primary my-button button-cancel">Cancel</span>
+                        <p *ngIf="editing && editing.preferredBackgrounds && error && error.preferredBackgrounds">{{error.preferredBackgrounds}}</p>
                     </div>
                 </div>
                 <div class="content" *ngIf="opportunity.backgrounds.length < 1">

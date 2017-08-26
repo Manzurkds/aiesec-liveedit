@@ -50,7 +50,18 @@ export class GeneralInfoComponent implements OnInit {
 
     let backgroundId = event.target.value; //Gets objects numeric id
     let property = event.target.name; //Gets properties generic names eg. backgrounds, skills, etc
-    let matchedProperty = 'required' + property[0].toUpperCase() + property.substr(1); // match the property to check for required and preferred
+    let selectId = event.target.id;
+    let option;
+
+    if(selectId.indexOf('required') !== -1) {
+      option = 'required';
+    } else if(selectId.indexOf('preferred') !== -1) {
+      option = 'preferred';
+    } else {
+      option = null;
+    }
+
+    let matchedProperty = option + property[0].toUpperCase() + property.substr(1); // match the property to check for required and preferred
 
     let isNew = this.opportunityComponent.checkForDuplicates(backgroundId, property);
 
@@ -59,7 +70,12 @@ export class GeneralInfoComponent implements OnInit {
       let value = event.target.selectedOptions[0].text; //value(name) of the seleced backgrounds, skills, etc
       let option = this.editing[matchedProperty] ? 'required': 'preferred';
   
-      let object = {"id": backgroundId, "name": value, "option": option};
+      let object;
+      if(option) {
+        object = {"id": backgroundId, "name": value, "option": option};
+      } else {
+        object = {"id": backgroundId, "name": value};
+      }
       let oldArray = this.opportunity[property].slice();
 
       let array = this.opportunity[property];

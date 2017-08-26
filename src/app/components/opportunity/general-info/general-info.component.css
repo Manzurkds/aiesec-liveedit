@@ -97,3 +97,14 @@ a {
 .flex-right .content {
     padding-bottom: 1em;
 }
+
+.my-button {
+        max-width: 6em;
+    height: 2em;
+    padding: 3px;
+    font-weight: 100;
+    font-size: 12px;
+}
+.button-cancel {
+    background: red;
+}
