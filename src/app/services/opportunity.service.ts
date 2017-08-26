@@ -34,4 +34,8 @@ export class OpportunityService {
     return this.http.patch(url, body, this.options)
     .map(res => res.json());
   }
+
+  removeValues(id, value, property) {
+    
+  }
 }

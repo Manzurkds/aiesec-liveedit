@@ -57,7 +57,7 @@
                     </div>
                     <div class="content">
                         <span *ngFor="let background of opportunity.backgrounds | myFilter: 'required'; let last = last">
-                            <span>{{background.name}}</span>
+                            <span>{{background.name}}<sup class="remove" (click)="removeItem('backgrounds', background.id)">x</sup></span>
                             <span *ngIf="!last">, </span>
                         </span>
                         <select (change)="setArrayValues($event)" name="backgrounds" id="requiredBackgroundInput" *ngIf="editing && editing.requiredBackgrounds" [(ngModel)]="backgroundRequired">
@@ -65,14 +65,14 @@
                         </select>
                         <span (click)="toggleInput($event)" id="requiredBackgrounds" *ngIf="!(editing && editing.requiredBackgrounds)" class="btn btn-primary my-button">Add</span>
                         <span (click)="toggleInput($event)" id="requiredBackgrounds" *ngIf="editing && editing.requiredBackgrounds" class="btn btn-primary my-button button-cancel">Cancel</span>
-                        <p *ngIf="editing && editing.requiredBackgrounds && error && error.requiredBackgrounds">{{error.requiredBackgrounds}}</p>
+                        <p *ngIf="editing && editing.requiredBackgrounds && error && error.requiredBackgrounds">Error: {{error.requiredBackgrounds}}</p>
                     </div>
                     <div class="heading">
                         Preferred
                     </div>
                     <div class="content">
                         <span *ngFor="let background of opportunity.backgrounds | myFilter: 'preferred'; let last = last">
-                            <span>{{background.name}}</span>
+                            <span>{{background.name}}<sup class="remove" (click)="removeItem('backgrounds', background.id)">x</sup></span>
                             <span *ngIf="!last">, </span>
                         </span>
                         <select (change)="setArrayValues($event)" name="backgrounds" id="preferredBackgroundInput" *ngIf="editing && editing.preferredBackgrounds" [(ngModel)]="backgroundPreferred">
@@ -80,7 +80,7 @@
                         </select>
                         <span (click)="toggleInput($event)" id="preferredBackgrounds" *ngIf="!(editing && editing.preferredBackgrounds)" class="btn btn-primary my-button">Add</span>
                         <span (click)="toggleInput($event)" id="preferredBackgrounds" *ngIf="editing && editing.preferredBackgrounds" class="btn btn-primary my-button button-cancel">Cancel</span>
-                        <p *ngIf="editing && editing.preferredBackgrounds && error && error.preferredBackgrounds">{{error.preferredBackgrounds}}</p>
+                        <p *ngIf="editing && editing.preferredBackgrounds && error && error.preferredBackgrounds">Error: {{error.preferredBackgrounds}}</p>
                     </div>
                 </div>
                 <div class="content" *ngIf="opportunity.backgrounds.length < 1">

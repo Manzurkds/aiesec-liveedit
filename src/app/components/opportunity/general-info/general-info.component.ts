@@ -68,7 +68,6 @@ export class GeneralInfoComponent implements OnInit {
     if(isNew) {
       let id = this.opportunity.id;
       let value = event.target.selectedOptions[0].text; //value(name) of the seleced backgrounds, skills, etc
-      let option = this.editing[matchedProperty] ? 'required': 'preferred';
   
       let object;
       if(option) {
@@ -83,6 +82,8 @@ export class GeneralInfoComponent implements OnInit {
   
       this.opportunityService.setValues(id, array, property).subscribe((result) => {
           console.log(result);
+          this.opportunityComponent.opportunity = result;
+          this.opportunity = result;
           this.error = {[matchedProperty]: null};
       }, (Error) => {
           let error = Error.json().error;
@@ -95,6 +96,20 @@ export class GeneralInfoComponent implements OnInit {
       this.error = {[matchedProperty]: error};
     }
     
+  }
+
+  removeItem(property, id) {
+    let array = this.opportunity[property].filter((item) => {
+      return item.id !== id;
+    });
+    this.opportunityService.setValues(this.opportunity.id, array, property).subscribe((result) => {
+        console.log(result);
+        this.opportunityComponent.opportunity = result;
+        this.opportunity = result;
+    }, (Error) => {
+        let error = Error.json().error;
+        console.log(error);
+    }); 
   }
 
 }
